@@ -1,0 +1,39 @@
+{% extends "base.twig" %}
+{% block title %}Festivals - Damso{% endblock %}
+
+{% block content %}
+    <h1>Festivals Été 2026</h1>
+
+    <div class="container-fest">
+
+        <aside class="aside">
+            <h2>Infos Pratiques</h2>
+
+            <div class="aside-info">
+                <h3>Camping</h3>
+                <p>L'accès au camping nécessite un billet spécifique. Pensez à le réserver en avance.</p>
+            </div>
+
+            <div class="aside-info">
+                <h3>Objets Interdits</h3>
+                <p>Bouteilles en verre, appareils photos pro et parapluies sont interdits sur les sites.</p>
+            </div>
+
+            <div class="aside-info">
+                <h3>Venir en groupe</h3>
+                <p>Des tarifs de groupe sont disponibles pour les comités d'entreprise.</p>
+            </div>
+        </aside>
+
+        <section class="festivals-list">
+            {% for fest in mes_festivals %}
+                <article class="festival-item" id="{{ fest.titre|lower|replace({' ': ''}) }}">
+                    <h3>{{ fest.titre }}</h3>
+                    <p>📍 {{ fest.lieu }} | 📅 {{ fest.date }}</p>
+                    <p class="prix-festival">Prix billet : {{ fest.prix }} €</p>
+                </article>
+            {% endfor %}
+        </section>
+
+    </div>
+{% endblock %}

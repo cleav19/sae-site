@@ -1,0 +1,68 @@
+{% extends "base.twig" %}
+{% block title %}Tournée 2026 - Damso{% endblock %}
+
+{% block content %}
+    <h1>BĒYĀH Tour 2026</h1>
+
+    {# --- TABLEAU FRANCE --- #}
+    <h2 id="france">Dates en France 📍</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Date</th>
+            <th>Ville</th>
+            <th>Salle / Lieu</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for show in mes_concerts %}
+            {% if show.pays == 'France' %}
+                <tr>
+                    <td>{{ show.date }}</td>
+                    <td>{{ show.ville }}</td>
+                    <td>{{ show.salle }}</td>
+                    <td>
+                        {% if show.complet %}
+                            <span class="complet">COMPLET ❌</span>
+                        {% else %}
+                            <a href="{{ show.site }}" class="bt-reserver" target="_blank">Réserver {{ show.prix }}€</a>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endif %}
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {# --- TABLEAU INTERNATIONAL --- #}
+    <h2 id="international">Dates à l'International 🌍</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Date</th>
+            <th>Ville </th>
+            <th>Salle / Lieu</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for show in mes_concerts %}
+            {% if show.pays == 'International' %}
+                <tr>
+                    <td>{{ show.date }}</td>
+                    <td>{{ show.ville }}</td>
+                    <td>{{ show.salle }}</td>
+                    <td>
+                        {% if show.complet %}
+                            <span class="complet">COMPLET ❌</span>
+                        {% else %}
+                            <a href="{{ show.site }}" class="bt-reserver" target="_blank">Réserver {{ show.prix }}€</a>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endif %}
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

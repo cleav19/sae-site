@@ -1,0 +1,17 @@
+{% extends "base.twig" %}
+{% block title %}Discographie - Damso{% endblock %}
+
+{% block content %}
+    <h1>Discographie Complète</h1>
+    <div class="albums">
+        {% for album in mes_albums %}
+            <article class="card-album" id="{{ album.titre|lower|replace({' ': ''}) }}">
+                <img src="{{ album.image }}" alt="{{ album.titre }}">
+                <h3>{{ album.titre }}</h3>
+                <p>Année : {{ album.annee }}</p>
+                <p class="texte-gris">{{ album.duree }} | {{ album.nb_titre }} titres</p>
+                <small class="text-gold">Ventes : {{ album.nb_vente }}</small>
+            </article>
+        {% endfor %}
+    </div>
+{% endblock %}
